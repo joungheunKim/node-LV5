@@ -14,8 +14,8 @@ module.exports = async (req, res, next) => {
     }
 
     const decodedToken = jwt.verify(token, env.JWT_SECRET_KET);
-    const user_id = decodedToken.user_id;
-    const user = await Users.findOne({ where: { user_id } });
+    const userId = decodedToken.userId;
+    const user = await Users.findOne({ where: { userId } });
 
     if (!user) {
       res.clearCookie('Authorization');

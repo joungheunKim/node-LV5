@@ -11,7 +11,7 @@ class UserController {
       // 서비스 계층에 구현된 findAllUsers 로직을 실행합니다.
       const { code, message, token } = await this.userService.loginUser(nickname, password);
 
-      res.cookie('authorization', `Bearer ${token}`)
+      res.cookie('Authorization', `Bearer ${token}`)
       return res.status(code).json(message)
     } catch (err) {
       if (err.code) return res.status(err.code).json({ message: err.message });
