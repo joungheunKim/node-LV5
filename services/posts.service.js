@@ -49,7 +49,7 @@ class PostService {
   updatePost = async ({postId, userId, title, content}) => {
     const findPost = await this.postRepository.findOne({ postId });
     if (!findPost) throw ({ code: 404, message:'게시글이 존재하지 않습니다'})
-  
+
     const findPostUserId = findPost.UserId
     if (userId !== findPostUserId) throw ({ code: 401, message:'게시글 수정은 작성자만 가능합니다.'});
 
