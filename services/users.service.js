@@ -38,7 +38,7 @@ class UserService {
 
     const findUser = await this.userRepository.findUser([{nickname:nickname}]);
 
-    if (password === confirmPassword)
+    if (password !== confirmPassword)
       throw { code: 400, message: '비밀번호가 일치하지 않습니다.' };
 
     if (findUser) throw { code: 400, message: '중복된 닉네임 입니다.' };

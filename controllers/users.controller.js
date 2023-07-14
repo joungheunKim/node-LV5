@@ -24,11 +24,7 @@ class UserController {
     try {
       const { nickname, password, confirmPassword } = req.body;
       // 서비스 계층에 구현된 findAllUsers 로직을 실행합니다.
-      const { code, message } = await this.userService.createUser(
-        nickname,
-        password,
-        confirmPassword
-      );
+      const { code, message } = await this.userService.createUser( nickname, password, confirmPassword);
       return res.status(code).json(message);
     } catch (err) {
       if (err.code) return res.status(err.code).json({ message: err.message });
